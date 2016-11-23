@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import br.iesb.android.tracking.R;
 import butterknife.Bind;
@@ -66,14 +68,13 @@ public class LocationMapFragment extends AppCompatActivity implements OnMapReady
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case R.id.action_mark:
-                Intent intent = new Intent(this, CreateMarkActivity.class);
+            case R.id.action_mark:
+                Intent intent = new Intent(LocationMapFragment.this, CreateMarkActivity.class);
                 startActivity(intent);
-                finish();*/
+                return true;
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-        return false;
     }
 
     private void getLocation() {

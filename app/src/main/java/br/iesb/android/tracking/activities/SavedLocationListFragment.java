@@ -8,14 +8,27 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import br.iesb.android.tracking.R;
 
-public class SavedLocationListActivity extends AppCompatActivity {
+public class SavedLocationListFragment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_saved_location_list);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -28,7 +28,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Histórico de Pontos"
+        android:text="Novos Pontos"
         android:id="@+id/findLocationsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Novos Pontos"
+        android:text="Histórico de Pontos"
         android:id="@+id/savedLocationsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"

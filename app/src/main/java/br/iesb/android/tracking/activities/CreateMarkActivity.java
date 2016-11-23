@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,11 +35,9 @@ public class CreateMarkActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.createMarkButton) Button mCreateMarkButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
 
-    //private static final int REQUEST_IMAGE_CAPTURE = 111;
-    public Location mLocation;
-
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private static final int REQUEST_IMAGE_CAPTURE = 111;
+    private ImageView mImageView;
+    //public Location mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,55 +47,60 @@ public class CreateMarkActivity extends AppCompatActivity implements View.OnClic
         ButterKnife.bind(this);
 
         mCreateMarkButton.setOnClickListener(this);
-
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_photo, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_photo:
-                //onLaunchCamera();
+                onLaunchCamera();
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-        return false;
     }
 
-    /*public void onLaunchCamera() {
+    @Override
+    public void onClick(View view) {
+
+        if (view == mCreateMarkButton) {
+            Intent intent = new Intent(CreateMarkActivity.this, LocationMapFragment.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    public void onLaunchCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
-    }*/
+    }
 
     /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == getActivity().RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            encodeBitmapAndSaveToFirebase(imageBitmap);
+            mImageView.setImageBitmap(imageBitmap);
+            //encodeBitmapAndSaveToFirebase(imageBitmap);
         }
     }*/
 
@@ -110,39 +114,5 @@ public class CreateMarkActivity extends AppCompatActivity implements View.OnClic
                 .child(mLocation.getPushId())
                 .child("imageUrl");
         ref.setValue(imageEncoded);
-    }*/
-
-
-    @Override
-    public void onClick(View view) {
-
-        if (view == mCreateMarkButton) {
-
-            Intent intent = new Intent(this, LocationMapFragment.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    /*public void saveMarkToFirebase(String location) {
-        mNameEditText.setName(location);
-    }
-
-    private void createNewMark() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        DatabaseReference locationRef = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_LOCATIONS)
-                .child(uid);
-
-        DatabaseReference pushRef = locationRef.push();
-        String pushId = pushRef.getKey();
-        mLocation.setPushId(pushId);
-        pushRef.setValue(mLocation);
-
-        Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
     }*/
 }
