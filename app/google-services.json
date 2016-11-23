@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "657984155794",
+    "firebase_url": "https://localiza-car.firebaseio.com",
+    "project_id": "localiza-car",
+    "storage_bucket": "localiza-car.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657984155794:android:053d31d08270df99",
+        "android_client_info": {
+          "package_name": "br.iesb.android.tracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657984155794-qj3mct8v51v9lv3r1cj9l9rro1st2l93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.iesb.android.tracking",
+            "certificate_hash": "11E68B0C49A608D9D2C7F4513CA4E85E9F6B68AD"
+          }
+        },
+        {
+          "client_id": "657984155794-b9pcfh81bftleha491j0evbcuo9c8s7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUsKxwAZltTGTABzPVLI8r2lkM1AZKg2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657984155794-b9pcfh81bftleha491j0evbcuo9c8s7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

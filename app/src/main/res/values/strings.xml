@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tracking</string>
+
+    <string name="map_not_ready">O mapa ainda não está pronto</string>
+    <string name="location_permission_denied">Esse app requer permissão de local para ativar a camada \'minha localização\'. Tente novamente e conceda acesso para usar o local. \nSe a permissão tiver sido negada permanentemente, ela poderá ser ativada nas Configurações do Sistema &gt; Apps &gt; \'API do Google Maps\'. </string>
+    <string name="permission_required_toast">A autorização de localização é necessária para este app.</string>
+    <string name="permission_rationale_location">O acesso ao serviço de localização é necessário para o recurso \'minha localização\', que mostra sua localização atual no mapa.</string>
+</resources>
