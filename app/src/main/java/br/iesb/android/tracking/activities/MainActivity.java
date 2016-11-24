@@ -1,6 +1,5 @@
 package br.iesb.android.tracking.activities;
 
-
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,19 +42,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAuth = FirebaseAuth.getInstance();
 
-        createNotification();
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     getSupportActionBar().setTitle("Bem-vindo, " + user.getDisplayName() + "!");
-                } else {
-
                 }
             }
         };
+        createNotification();
     }
 
     @Override
@@ -86,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             logout();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -102,12 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if(v == mFindLocationsButton) {
-            Intent intent = new Intent(this, LocationMapFragment.class);
+            Intent intent = new Intent(MainActivity.this, LocationMapFragment.class);
             startActivity(intent);
         }
 
         if (v == mSavedLocationsButton) {
-            Intent intent = new Intent(this, SavedLocationListFragment.class);
+            Intent intent = new Intent(MainActivity.this, SavedLocationListFragment.class);
             startActivity(intent);
         }
     }
@@ -118,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBuilder.setSmallIcon(R.mipmap.ic_launcher);
         mBuilder.setContentTitle("Tracking");
         mBuilder.setContentText("Bem vindo ao Tracking!");
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(MainActivity.this.NOTIFICATION_SERVICE);
         mNotificationManager.notify(0, mBuilder.build());
     }
 }

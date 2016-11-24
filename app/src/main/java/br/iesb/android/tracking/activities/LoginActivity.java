@@ -48,12 +48,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createAuthProgressDialog();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
                 }
@@ -97,7 +97,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if (!task.isSuccessful()) {
                     Log.w(TAG, "signInWithEmail", task.getException());
-                    Toast.makeText(LoginActivity.this, "Falha na autenticação", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Falha na autenticação",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -56,8 +56,7 @@
             android:layout_marginBottom="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/colorDivider"
-            android:textSize="20sp"
-            android:fontFamily="sans-serif" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
